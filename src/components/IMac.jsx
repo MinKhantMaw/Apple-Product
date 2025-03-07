@@ -44,7 +44,9 @@ const IMac = () => {
                 setVisibleLabel(model.label);
               }}
             />
-            <span className="text-sm ">{model.label}</span>
+            {visibleLabel === model.label && (
+              <span className="text-sm ">{model.label}</span>
+            )}
           </div>
         ))}
 
