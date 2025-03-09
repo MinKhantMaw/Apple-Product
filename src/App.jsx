@@ -12,6 +12,7 @@ const App = () => {
   const [frameZoom, setFrameZoom] = useState(false);
   const [activePage, setActivePage] = useState(0);
   const [isLgScreen, setIsLgScreen] = useState(window.innerWidth > 1024);
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -35,6 +36,11 @@ const App = () => {
       setFrameZoom(!frameZoom);
     }
   };
+
+  const toggleNavBar = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+
   const resetPage = () => {
     setActivePage(0);
   };
@@ -45,7 +51,12 @@ const App = () => {
           frameZoom && "min-w-[97vw] min-h-[97vh]"
         } w-[70vw] h-[85vh] min-w[70vw] min-h[85vh] max-w[90vw] max-h[90vh] border border-gray-300 rounded-2xl resize overflow-auto relative transition-all duration-100 flex`}
       >
-        <Navbar activePage={activePage} handleNavClick={handleNavClick} />
+        <Navbar
+          activePage={activePage}
+          handleNavClick={handleNavClick}
+          isNavOpen={isNavOpen}
+          toggleNavBar={toggleNavBar}
+        />
         <Controls
           toggleZoom={toggleZoom}
           frameZoom={frameZoom}
